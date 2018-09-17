@@ -6,7 +6,7 @@
 
 
 
-int Kath(char **a, int n, int i);  // mirror  //
+int Kath(char **a, int n, int i);  // mirror fuction //
 
 
 void main()
@@ -18,41 +18,41 @@ void main()
 	{
 		do
 		{
-			printf("Give the number of the words:");  // ekxwrhsh twn grammwn //
+			printf("Give the number of the words:");  // number of lines //
 			fflush(stdin);
 			scanf("%d", &number);
 			if (number<1)
 				printf("Wrong number!\n");
-		}while (number<1);  // elegxos gia arnhtikes times //
+		}while (number<1);  // check for negative numbers //
 		
 		do
 		{
-			printf("Give the size of the bigger word:");  // ekxwrhsh twn sthlwn //
+			printf("Give the size of the bigger word:");  
 			fflush(stdin);
 			scanf("%d", &size);
 			if (size<1)
-				printf("Wrong size!!\n");
-		}while (size<1);  // elegxos gia arnhtikes times //
+				printf("Wrong size!\n");
+		}while (size<1);  // check for negative numbers //
 
-		pin_leksewn = (char **) malloc (number * sizeof(char));  // dhmiourgia grammwn //
+		pin_leksewn = (char **) malloc (number * sizeof(char));  // create the lines //
 
 		for (i=0;i<number;i++)
-			pin_leksewn[i] = (char *) malloc ((size+1) * sizeof(char)); // dhmiourgia sthlwm //
+			pin_leksewn[i] = (char *) malloc ((size+1) * sizeof(char)); // create the columns //
 	
 		for (i=0;i<number;i++)
 		{
 			fflush(stdin);
 			printf("Give the %d word:", i);
-			gets(pin_leksewn[i]);  // ekxwrhsh twn leksewn ston pinaka //
+			gets(pin_leksewn[i]);  // assign the words to the array //
 		}
 	
-		Kath(pin_leksewn, number-1, i=0);  // sunarthsh kathreuths //
+		Kath(pin_leksewn, number-1, i=0);  // mirror fuction //
 
-		printf("Press any key to repeat or 'e' for exit: ");  // erwthsh epanalhpshs //
+		printf("Press any key to repeat or 'e' for exit: "); 
 		fflush(stdin);
 		scanf("%c", &ans);
 
-	}while (ans!='e');  // epanalhpsh tou programmatos //
+	}while (ans!='e');  // repeat the program //
 }
 
 
@@ -63,22 +63,22 @@ int Kath(char **a, int n, int i)
 {
 	int x;
 
-	if (i==n || n<i)  // an oi metavlhtes pou xrhsimopoiountai sth sugrish einai ises mesaia h an kseperash h metavlhth pou einai sto telos auth pou einai sth prwth grammh-leksh tote o pinakas kathreutizetai //
+	if (i==n || n<i)  // if the variables that used for compare are equal or if the variable which is in the end overcomes the one which is in the first line-word then the array is mirrored //
 	{
-		printf("\nO pinakas kathreutizetai!!\n\n");
+		printf("\nThe array is mirrored!\n\n");
 		return(0);
 	}
 
-	x = strcmp(a[i], a[n]);  // sugrish grammwn-leksewn mesw ths sunarthshs strcmp //
+	x = strcmp(a[i], a[n]);  // compare lines-words througth the function strcmp //
 
-	if (x==0)  // an to x=0 tote oi lekseis einai ises //
+	if (x==0)  // if x=0 then the words are equal //
 	{
-		x=Kath(a, n-1,i+1); // anadromh //
+		x=Kath(a, n-1,i+1); // recursion //
 		return(x);
 	}
-	else   // alliws o pinakas den kathreutizetai //
+	else   // else the array is not mirrored! //
 	{
-		printf("\nO pinakas den kathreutizetai!!\n\n");
+		printf("\nThe array is not mirrored!\n\n");
 		return(1);
 	}
 
